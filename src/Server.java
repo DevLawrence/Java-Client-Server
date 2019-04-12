@@ -46,7 +46,7 @@ public class Server extends JFrame {
 	 { 
 		 try 
 		 {
-			 server = new ServerSocket( 80,100 ); 
+			 server = new ServerSocket( 8080,100 ); //from 80,100 to 8080,100
 			 while ( true ) 
 			 { 
 				 try { 
