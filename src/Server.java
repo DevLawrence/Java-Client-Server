@@ -72,7 +72,7 @@ public class Server extends JFrame {
 	 
 	 private void waitForConnection() throws IOException 
 	 {
-		 displayMessage( "Waiting for connection\n" );
+		 displayMessage( "Waiting for connection \n" );
 		 connection = server.accept();
 		 displayMessage( "Connection " + " received from: " + connection.getInetAddress().getHostName());
 		 
@@ -82,7 +82,7 @@ public class Server extends JFrame {
 		 output=new ObjectOutputStream(connection.getOutputStream());
 		 output.flush();
 		 input=new ObjectInputStream(connection.getInputStream());
-		 displayMessage( "\nGot I/O streams\n" ); 
+		 displayMessage( "\n Got I/O streams \n" ); 
 	 }
 	 
 	 private void processConnection() throws IOException 
@@ -99,14 +99,14 @@ public class Server extends JFrame {
 			 
 			 catch ( ClassNotFoundException classNotFoundException ) 
 			 {
-				 displayMessage( "\nUnknown object type received" ); 
+				 displayMessage( "\n Unknown object type received" ); 
 			 }
-		 } while ( !message.equals( "CLIENT>>> TERMINATE" ) ); 
+		 } while ( !message.equals( "CLIENT >>> TERMINATE" ) ); 
 	 }
 	 
 	 private void closeConnection() 
 	 {
-		 displayMessage( "\nTerminating connection\n" ); 
+		 displayMessage( "\n Terminating connection \n" ); 
 		 setTextFieldEditable( false ); // disable enterField 
 		 try
 		 {
@@ -124,14 +124,14 @@ public class Server extends JFrame {
 	 {
 		 try
 		 {
-			 output.writeObject( "SERVER>>> " + message ); 
+			 output.writeObject( "SERVER >>> " + message ); 
 			 output.flush(); // flush output to client
-			 displayMessage( "\nSERVER>>> " + message ); 
+			 displayMessage( "\n SERVER>>> " + message ); 
 		 }
 		 
 		 catch ( IOException ioException ) 
 		 {
-			 displayArea.append( "\nError writing object" ); 
+			 displayArea.append( "\n Error writing object" ); 
 		 }
 	 }
 	 
