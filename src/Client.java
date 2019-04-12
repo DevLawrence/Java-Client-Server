@@ -69,7 +69,7 @@ public void runClient()
 private void connectToServer() throws IOException 
 {
 	displayMessage( "Attempting connection\n" );
-	client = new Socket("127.0.0.1",80);//(address,port)
+	client = new Socket("127.0.0.1",8080);//(address,port) // updated port from 80 to 8080
 	 displayMessage( "Connected to: " + client.getInetAddress().getHostName());
 }
 
@@ -78,8 +78,8 @@ private void getStreams() throws IOException
 	output=new ObjectOutputStream(client.getOutputStream());
 	output.flush();
 	input = new ObjectInputStream( client.getInputStream() ); 
-	displayMessage( "\nGot I/O streams\n" ); 
-}//here
+	displayMessage( "\n Got I/O streams \n" ); 
+}
 
 
 private void processConnection() throws IOException 
@@ -95,14 +95,14 @@ private void processConnection() throws IOException
 		 
 		 catch ( ClassNotFoundException classNotFoundException ) 
 		 {
-			 displayMessage( "\nUnknown object type received" ); 
+			 displayMessage( "\n Unknown object type received" ); 
 		 }
-	 } while ( !message.equals( "SERVER>>> TERMINATE" ) ); 
+	 } while ( !message.equals( "SERVER >>> TERMINATE" ) ); 
 }
 
 private void closeConnection() 
 {
-	 displayMessage( "\nClosing connection" ); 
+	 displayMessage( "\n Closing connection" ); 
 	 setTextFieldEditable( false ); // disable enterField
 try
 {
@@ -119,14 +119,14 @@ private void sendData( String message )
 {
 	try
 	{
-		output.writeObject( "CLIENT>>> " + message ); 
+		output.writeObject( "CLIENT >>> " + message ); 
 		output.flush(); 
-		displayMessage( "\nCLIENT>>> " + message ); 
+		displayMessage( "\n CLIENT >>> " + message ); 
 	}
 	
 	 catch ( IOException ioException ) 
 	{
-		 displayArea.append( "\nError writing object" ); 
+		 displayArea.append( "\n Error writing object" ); 
 	}
 }
 
