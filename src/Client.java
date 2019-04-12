@@ -121,7 +121,7 @@ private void sendData( String message )
 	{
 		output.writeObject( "CLIENT>>> " + message ); 
 		output.flush(); 
-		 displayMessage( "\nCLIENT>>> " + message ); 
+		displayMessage( "\nCLIENT>>> " + message ); 
 	}
 	
 	 catch ( IOException ioException ) 
